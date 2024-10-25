@@ -10,6 +10,7 @@
   - [Cambiar al modo desarrolladores](#cambiar-al-modo-desarrolladores)
   - [Acceder al contendor Odoo :black\_medium\_square:](#acceder-al-contendor-odoo-black_medium_square)
   - [Crear un nuevo modulo](#crear-un-nuevo-modulo)
+  - [Volumenes en docker](#volumenes-en-docker)
   - [Referencias :earth\_asia:](#referencias-earth_asia)
 
 
@@ -85,6 +86,25 @@ odoo scaffold modulo-custom
 [:part_alternation_mark: Arítculo de Medium sobre crear un modulo](https://medium.com/@waooseo/how-to-create-or-develop-a-custom-module-in-odoo-814b083473aa)
 
 :warning: *Elimina la carpeta addons del fichero .gitignore para que el modulo que desarrolles se suba github*
+
+## Volumenes en docker
+
+Docker, es un entorno de virtualización de contenedores. Uno de los principios de diseño, es el de separación de responsabilidades. Se intenta separar el contendor de los datos, de forma que la máquina pueda desecharse o crearse mientras que se conserva la información. Esto se solucciona en parte gracias a los volumenes.
+
+Los volumenes son directorios, que pueden estar bien enlazados a un directorio de nuestro equipo o bien tratarse de volumenes que se guardan en el entorno virtual de docker y se montan en una ruta del sistema de archivos del contendor. 
+
+![alt text](image-5.png)
+
+En la imagen vemos los dos tipos de volumenes:
+
+- **odoo-web-data**: es un volumen virtual (no especifica ruta relativa o absoluta en el equipo host). Podemos, ver estos volumenes en la intefaz de Docker o con el comando `docker volume ls` 
+
+---
+ 
+![alt text](image-6.png)
+- **./addons**: Es un volumen bindeado a una carpeta de nuestro equipo (incluye ruta relativa o absoluta)
+
+
 ## Referencias :earth_asia:
 
 [:whale2: Docker Hub Odooo](https://hub.docker.com/_/odoo)
