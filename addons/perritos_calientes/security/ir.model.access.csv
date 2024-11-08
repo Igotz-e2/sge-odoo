@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_perritos_calientes_perritos_calientes,perritos_calientes.perritos_calientes,model_perritos_calientes_perritos_calientes,base.group_user,1,1,1,1
