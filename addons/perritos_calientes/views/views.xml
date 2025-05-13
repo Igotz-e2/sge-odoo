@@ -1,7 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
+
     <record model="ir.ui.view" id="perritos_calientes.list">
       <field name="name">perritosCalientes list</field>
       <field name="model">perritos_calientes.perritos_calientes</field>
@@ -13,19 +13,19 @@
         </tree>
       </field>
     </record>
--->
+
 
     <!-- actions opening views on models -->
-<!--
+
     <record model="ir.actions.act_window" id="perritos_calientes.action_window">
       <field name="name">perritosCalientes window</field>
       <field name="res_model">perritos_calientes.perritos_calientes</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
+
 
     <!-- server action to the one above -->
-<!--
+
     <record model="ir.actions.server" id="perritos_calientes.action_server">
       <field name="name">perritosCalientes server</field>
       <field name="model_id" ref="model_perritos_calientes_perritos_calientes"/>
@@ -38,23 +38,18 @@
         }
       </field>
     </record>
--->
 
     <!-- Top menu item -->
-<!--
     <menuitem name="perritosCalientes" id="perritos_calientes.menu_root"/>
--->
     <!-- menu categories -->
-<!--
+
     <menuitem name="Menu 1" id="perritos_calientes.menu_1" parent="perritos_calientes.menu_root"/>
     <menuitem name="Menu 2" id="perritos_calientes.menu_2" parent="perritos_calientes.menu_root"/>
--->
+
     <!-- actions -->
-<!--
     <menuitem name="List" id="perritos_calientes.menu_1_list" parent="perritos_calientes.menu_1"
               action="perritos_calientes.action_window"/>
     <menuitem name="Server to list" id="perritos_calientes" parent="perritos_calientes.menu_2"
               action="perritos_calientes.action_server"/>
--->
   </data>
 </odoo>
