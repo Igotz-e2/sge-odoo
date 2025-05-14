@@ -39,17 +39,20 @@
       </field>
     </record>
 
-    <!-- Top menu item -->
-    <menuitem name="perritosCalientes" id="perritos_calientes.menu_root"/>
-    <!-- menu categories -->
+    <!-- Menú raíz -->
+    <menuitem id="perritos_calientes.menu_root" name="Perritos Calientes"/>
 
-    <menuitem name="Menu 1" id="perritos_calientes.menu_1" parent="perritos_calientes.menu_root"/>
-    <menuitem name="Menu 2" id="perritos_calientes.menu_2" parent="perritos_calientes.menu_root"/>
+    <!-- Acción -->
+    <record id="perritos_calientes.action_perritos" model="ir.actions.act_window">
+        <field name="name">Perritos</field>
+        <field name="res_model">perritos_calientes.perritos_calientes</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
-    <!-- actions -->
-    <menuitem name="List" id="perritos_calientes.menu_1_list" parent="perritos_calientes.menu_1"
-              action="perritos_calientes.action_window"/>
-    <menuitem name="Server to list" id="perritos_calientes" parent="perritos_calientes.menu_2"
-              action="perritos_calientes.action_server"/>
+    <!-- Menú secundario que llama la acción -->
+    <menuitem id="perritos_calientes.menu_1"
+              name="Perritos"
+              parent="perritos_calientes.menu_root"
+              action="perritos_calientes.action_perritos"/>
   </data>
 </odoo>
