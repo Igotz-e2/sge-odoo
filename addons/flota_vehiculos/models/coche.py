@@ -30,3 +30,14 @@ class Coche(models.Model):
     def toggle_disponible(self):
         for record in self:
             record.disponible = not record.disponible
+
+    @api.model
+    def init(self):
+        if not self.env['flota_vehiculos.coche'].search_count([]):
+            coches = [
+                {'codigo': 'A001', 'marca': 'seat', 'modelo': 'Ibiza', 'matricula': '1234ABC', 'disponible': True},
+                {'codigo': 'B002', 'marca': 'bmw', 'modelo': 'Serie 3', 'matricula': '5678DEF', 'disponible': True},
+                {'codigo': 'C003', 'marca': 'audi', 'modelo': 'A4', 'matricula': '9012GHI', 'disponible': False}
+            ]
+            for coche in coches:
+                self.env['flota_vehiculos.coche'].create(coche)

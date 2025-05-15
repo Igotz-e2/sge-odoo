@@ -1,15 +1,16 @@
 <odoo>
-    <menuitem id="flota_menu_root" name="Flota de Vehículos"/>
+    <!-- Menú Principal -->
+    <menuitem id="flota_menu_root" name="Gestión Flota" sequence="10"/>
 
+    <!-- Submenú Coches -->
     <menuitem id="flota_menu_coches"
               name="Coches"
               parent="flota_menu_root"
-              action="flota_vehiculos.action_coche"/>
+              action="flota_vehiculos_action_coche"/> <!-- Cambiado de 'action_coche' a 'flota_vehiculos_action_coche' -->
 
+    <!-- Submenú Reservas -->
     <menuitem id="flota_menu_reservas"
-          name="Reservas"
-          parent="flota_menu_root"
-          action="flota_vehiculos_action_reserva"/>
-    
-    
+              name="Reservas"
+              parent="flota_menu_root"
+              action="flota_vehiculos_action_reserva"/>
 </odoo>

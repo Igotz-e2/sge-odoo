@@ -1,44 +1,70 @@
 <odoo>
-    <!-- Acción para Reservas -->
+    <!-- Acción para Reservas - Mejorada con filtros -->
     <record id="flota_vehiculos_action_reserva" model="ir.actions.act_window">
         <field name="name">Reservas</field>
         <field name="res_model">flota_vehiculos.reserva</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,calendar</field>
+        <field name="context">{'search_default_entregado': 0}</field>
     </record>
 
-    <!-- Vista Árbol -->
+    <!-- Vista Árbol Mejorada -->
     <record id="flota_vehiculos_view_tree_reserva" model="ir.ui.view">
         <field name="name">flota_vehiculos.reserva.tree</field>
         <field name="model">flota_vehiculos.reserva</field>
         <field name="arch" type="xml">
-            <tree>
-                <field name="coche_id"/>
-                <field name="conductor_id"/>
-                <field name="fecha_inicio"/>
-                <field name="fecha_fin"/>
+            <tree decoration-danger="entregado == False" decoration-success="entregado == True">
+                <field name="coche_id" widget="selection"/>
+                <field name="conductor_id" widget="selection"/>
+                <field name="fecha_inicio" widget="date"/>
+                <field name="fecha_fin" widget="date"/>
                 <field name="zona"/>
                 <field name="entregado"/>
+                <button name="marcar_entregado" 
+                        type="object" 
+                        string="Marcar Entregado" 
+                        class="oe_highlight" 
+                        invisible="entregado"/>
             </tree>
         </field>
     </record>
 
-    <!-- Vista Formulario -->
+    <!-- Vista Formulario Mejorada -->
     <record id="flota_vehiculos_view_form_reserva" model="ir.ui.view">
         <field name="name">flota_vehiculos.reserva.form</field>
         <field name="model">flota_vehiculos.reserva</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="marcar_entregado" 
+                            type="object" 
+                            string="Marcar como Entregado" 
+                            class="oe_highlight"
+                            invisible="entregado"/>
+                </header>
                 <sheet>
                     <group>
-                        <field name="coche_id" domain="[('disponible', '=', True)]"/>
-                        <field name="conductor_id"/>
-                        <field name="fecha_inicio" required="1"/>
-                        <field name="fecha_fin"/>
+                        <field name="coche_id" domain="[('disponible', '=', True)]" options="{'no_create': True}"/>
+                        <field name="conductor_id" context="{'default_is_company': False}"/>
+                        <field name="fecha_inicio" required="1" widget="date"/>
+                        <field name="fecha_fin" widget="date"/>
                         <field name="zona"/>
-                        <field name="entregado"/>
+                        <field name="entregado" readonly="1"/>
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <!-- Vista Calendario (Opcional pero útil) -->
+    <record id="flota_vehiculos_view_calendar_reserva" model="ir.ui.view">
+        <field name="name">flota_vehiculos.reserva.calendar</field>
+        <field name="model">flota_vehiculos.reserva</field>
+        <field name="arch" type="xml">
+            <calendar date_start="fecha_inicio" date_stop="fecha_fin" color="coche_id">
+                <field name="conductor_id"/>
+                <field name="zona"/>
+                <field name="entregado"/>
+            </calendar>
         </field>
     </record>
 </odoo>
