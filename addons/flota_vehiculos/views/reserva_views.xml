@@ -1,0 +1,44 @@
+<odoo>
+    <!-- Acción para Reservas -->
+    <record id="flota_vehiculos_action_reserva" model="ir.actions.act_window">
+        <field name="name">Reservas</field>
+        <field name="res_model">flota_vehiculos.reserva</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista Árbol -->
+    <record id="flota_vehiculos_view_tree_reserva" model="ir.ui.view">
+        <field name="name">flota_vehiculos.reserva.tree</field>
+        <field name="model">flota_vehiculos.reserva</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="coche_id"/>
+                <field name="conductor_id"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_fin"/>
+                <field name="zona"/>
+                <field name="entregado"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista Formulario -->
+    <record id="flota_vehiculos_view_form_reserva" model="ir.ui.view">
+        <field name="name">flota_vehiculos.reserva.form</field>
+        <field name="model">flota_vehiculos.reserva</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="coche_id" domain="[('disponible', '=', True)]"/>
+                        <field name="conductor_id"/>
+                        <field name="fecha_inicio" required="1"/>
+                        <field name="fecha_fin"/>
+                        <field name="zona"/>
+                        <field name="entregado"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_coche,access.coche,model_flota_vehiculos_coche,base.group_user,1,1,1,1
+access_reserva,access.reserva,model_flota_vehiculos_reserva,base.group_user,1,1,1,1

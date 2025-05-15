@@ -1,0 +1,46 @@
+<odoo>
+    <!-- Acción para Coches -->
+    <record id="flota_vehiculos_action_coche" model="ir.actions.act_window">
+        <field name="name">Coches</field>
+        <field name="res_model">flota_vehiculos.coche</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista Árbol -->
+    <record id="flota_vehiculos_view_tree_coche" model="ir.ui.view">
+        <field name="name">flota_vehiculos.coche.tree</field>
+        <field name="model">flota_vehiculos.coche</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="disponible == False" decoration-success="disponible == True">
+                <field name="codigo"/>
+                <field name="marca"/>
+                <field name="modelo"/>
+                <field name="matricula"/>
+                <field name="disponible"/>
+                <button name="toggle_disponible" 
+                        type="object" 
+                        string="Cambiar Disponibilidad" 
+                        class="oe_highlight"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista Formulario -->
+    <record id="flota_vehiculos_view_form_coche" model="ir.ui.view">
+        <field name="name">flota_vehiculos.coche.form</field>
+        <field name="model">flota_vehiculos.coche</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="codigo" required="1"/>
+                        <field name="marca" required="1"/>
+                        <field name="modelo" required="1"/>
+                        <field name="matricula"/>
+                        <field name="disponible"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
